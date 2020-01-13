@@ -6,6 +6,7 @@ namespace Silverstripe\TargetingPoc\Extensions;
 use DNADesign\Elemental\Models\BaseElement;
 use GeoIp2\Exception\AddressNotFoundException;
 use SilverStripe\Core\Extension;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Security\Security;
 use GeoIp2\Database\Reader;
 
@@ -41,7 +42,11 @@ class ElementControllerExtension extends Extension
 
     public function visitorInCountry($isoCode)
     {
-        $reader = new Reader(sprintf('%s/mysite/fixtures/GeoLite2-Country.mmdb', BASE_PATH));
+        $path = ModuleLoader::getModule('silverstripe/targeting-poc')
+            ->getResource('data/GeoLite2-Country.mmdb')
+            ->getAbsolutePath();
+
+        $reader = new Reader($path);
 
         try {
             $record = $reader->country($_SERVER['REMOTE_ADDR']);
