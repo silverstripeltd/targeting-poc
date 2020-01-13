@@ -18,22 +18,6 @@ class BaseElementExtension extends DataExtension
         'ShowToGroup' => Group::class
     ];
 
-    /**
-     * Fix bug in embargo/expiry / versioned that doesn't pass through the user the job is running as
-     */
-    public function canPublish($member = null)
-    {
-        return true;
-    }
-
-    /**
-     * Fix bug in embargo/expiry / versioned that doesn't pass through the user the job is running as
-     */
-    public function canUnpublish($member = null)
-    {
-        return true;
-    }
-
     public function updateCMSFields(FieldList $fields)
     {
         $groupField = DropdownField::create('ShowToGroupID', 'Group', Group::get()->map())
