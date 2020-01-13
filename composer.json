@@ -4,5 +4,10 @@
     "require": {
         "dnadesign/silverstripe-elemental": "^4",
         "geoip2/geoip2": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\TargetingPoc\\": "src/"
+        }
     }
 }
