@@ -1,0 +1,7 @@
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - Silverstripe\TargetingPoc\Extensions\BaseElementExtension
+
+DNADesign\Elemental\Models\ElementalArea:
+  extensions:
+    - Silverstripe\TargetingPoc\Extensions\ElementalAreaExtension

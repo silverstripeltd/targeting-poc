@@ -1,0 +1,8 @@
+{
+    "name": "silverstripe/targeting-poc",
+    "description": "Proof of Concept for on-site targeting with blocks. Mainly used for sales demos.",
+    "require": {
+        "dnadesign/silverstripe-elemental": "^3",
+        "geoip2/geoip2": "~2.0"
+    }
+}
