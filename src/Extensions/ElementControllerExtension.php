@@ -53,7 +53,15 @@ class ElementControllerExtension extends Extension
     {
         // Default to session based override
         $request = Injector::inst()->get(HTTPRequest::class);
-        $session = $request->getSession();
+
+        /** @var Session $session */
+        $session = null;
+        try {
+            $session = $request->getSession();
+        } catch (\BadMethodCallException $e) {
+            // Nested block controllers do not inherit HTTP request with sessions correctly
+            return false;
+        }
 
         if ($country = $session->get('country')) {
             return ($isoCode == $country);
@@ -83,7 +91,15 @@ class ElementControllerExtension extends Extension
         // the controller might be an improperly nested one (ElementController nested in PageController),
         // and doesn't carry over the originally created request/session in the parent controller
         $request = Injector::inst()->get(HTTPRequest::class);
-        $session = $request->getSession();
+
+        /** @var Session $session */
+        $session = null;
+        try {
+            $session = $request->getSession();
+        } catch (\BadMethodCallException $e) {
+            // Nested block controllers do not inherit HTTP request with sessions correctly
+            return false;
+        }
 
         $visitorSegments = $session->get('segments') ? json_decode($session->get('segments'), true) : null;
 

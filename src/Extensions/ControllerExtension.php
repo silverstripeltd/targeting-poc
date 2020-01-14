@@ -24,7 +24,13 @@ class ControllerExtension extends DataExtension
         $request = $this->getOwner()->getRequest();
 
         /** @var Session $session */
-        $session = $request->getSession();
+        $session = null;
+        try {
+            $session = $request->getSession();
+        } catch (\BadMethodCallException $e) {
+            // Nested block controllers do not inherit HTTP request with sessions correctly
+            return false;
+        }
 
         // Authors can simulate different targeting criteria
         if (Permission::check('CMS_ACCESS_CMSMain')) {
