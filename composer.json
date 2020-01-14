@@ -9,5 +9,10 @@
         "psr-4": {
             "SilverStripe\\TargetingPoc\\": "src/"
         }
+    },
+    "extra": {
+        "expose": [
+            "client/css"
+        ]
     }
 }

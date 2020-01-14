@@ -1,0 +1,17 @@
+---
+Name: modules-targeting-poc
+Before: modules-other
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  module_priority:
+    - silverstripe/targeting-poc
+
+PageController:
+  extensions:
+    - Silverstripe\TargetingPoc\Extensions\ControllerExtension
+
+Silverstripe\TargetingPoc\Config:
+  use_groups: false
+  use_country: true
+  use_segments: true
+  use_loggedin: true
