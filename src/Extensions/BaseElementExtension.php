@@ -317,6 +317,9 @@ class BaseElementExtension extends DataExtension
                 ->setHasEmptyDefault(true)
                 ->setEmptyString('Please select');
             $fields->addFieldToTab('Root.Settings', $groupField);
+        } else {
+            // Remove scaffolded field
+            $fields->removeByName('ShowToGroupID');
         }
 
         if ($useSegments) {
