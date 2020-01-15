@@ -294,15 +294,15 @@ class BaseElementExtension extends DataExtension
         ];
 
         if ($useGroups) {
-            $opts['Group'] = "By Group";
+            $opts['Group'] = "Group";
         }
 
         if ($useCountry) {
-            $opts['ByCountry'] = 'By Country';
+            $opts['ByCountry'] = 'Country';
         }
 
         if ($useSegments) {
-            $opts['Segments'] = 'By Segment';
+            $opts['Segments'] = 'Segment';
         }
 
         if ($useLoggedIn) {
@@ -310,22 +310,22 @@ class BaseElementExtension extends DataExtension
             $opts['LoggedOut'] = 'Logged-out users';
         }
 
-        $fields->addFieldToTab('Root.Settings', DropdownField::create('ShowTo', 'Target block', $opts));
+        $fields->addFieldToTab('Root.Settings', DropdownField::create('ShowTo', 'Target block to', $opts));
 
         if ($useGroups) {
-            $groupField = DropdownField::create('ShowToGroupID', 'Group', Group::get()->map())
+            $groupField = DropdownField::create('ShowToGroupID', 'Target to Group', Group::get()->map())
                 ->setHasEmptyDefault(true)
                 ->setEmptyString('Please select');
             $fields->addFieldToTab('Root.Settings', $groupField);
         }
 
         if ($useSegments) {
-            $segmentField = ListboxField::create('Segments', 'Segments', $this->getSegmentList());
+            $segmentField = ListboxField::create('Segments', 'Target to Segment', $this->getSegmentList());
             $fields->addFieldToTab('Root.Settings', $segmentField);
         }
 
         if ($useCountry) {
-            $countryField = DropdownField::create('Country', 'Only show to these countries:', $this->getCountriesList())
+            $countryField = DropdownField::create('Country', 'Target to Country', $this->getCountriesList())
                 ->setHasEmptyDefault(true)
                 ->setEmptyString('Please select');
             $fields->addFieldToTab('Root.Settings', $countryField);
