@@ -70,7 +70,7 @@ class ElementControllerExtension extends Extension
         // Try geotargeting as fallback
         $path = ModuleLoader::getModule('silverstripe/targeting-poc')
             ->getResource('data/GeoLite2-Country.mmdb')
-            ->getAbsolutePath();
+            ->getPath();
 
         $reader = new Reader($path);
 
