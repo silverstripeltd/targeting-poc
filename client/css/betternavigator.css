@@ -1,7 +1,16 @@
+#BetterNavigatorContent .bn-heading {
+    text-align: left !important;
+}
+
 #BetterNavigator form.targeting {
     display: block;
 }
 
 #BetterNavigator form.targeting .form-check-inline {
     display: block;
+}
+
+#BetterNavigator form.targeting select,
+#BetterNavigator form.targeting input {
+    font-size: 1em;
 }
