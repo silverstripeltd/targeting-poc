@@ -30,7 +30,10 @@ class BaseElementExtension extends DataExtension
      */
     private static $segments = [
         'InterestedBusiness' => 'Interested in Business',
-        'InterestedEducation' => 'Interested in Education',
+        'InterestedEducation' => 'Interested in Creative Arts',
+        'InterestedHealth' => 'Interested in Health',
+        'InterestedHumanities' => 'Interested in Humanities',
+        'Enquired' => 'Enquired',
         'Enrolled' => 'Enrolled',
     ];
 
@@ -40,11 +43,9 @@ class BaseElementExtension extends DataExtension
      */
     private static $countries = [
         'NZ' => 'New Zealand',
-        'AU' => 'Australia',
-        'US' => 'United States of America',
-        'GB' => 'United Kingdom',
-        'CN' => 'China',
+        'XX' => 'International',
         '--' => '--------------',
+        'AU' => 'Australia',
         'AF' => 'Afghanistan',
         'AL' => 'Albania',
         'DZ' => 'Algeria',
@@ -87,6 +88,7 @@ class BaseElementExtension extends DataExtension
         'CF' => 'Central African Republic',
         'TD' => 'Chad',
         'CL' => 'Chile',
+        'CN' => 'China',
         'CX' => 'Christmas Island',
         'CC' => 'Cocos Islands',
         'CO' => 'Colombia',
@@ -269,6 +271,8 @@ class BaseElementExtension extends DataExtension
         'UG' => 'Uganda',
         'UA' => 'Ukraine',
         'AE' => 'United Arab Emirates',
+        'US' => 'United States of America',
+        'GB' => 'United Kingdom',
         'UY' => 'Uruguay',
         'UZ' => 'Uzbekistan',
         'VU' => 'Vanuatu',
