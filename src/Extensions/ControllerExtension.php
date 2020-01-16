@@ -86,6 +86,7 @@ class ControllerExtension extends DataExtension
             $fields->push(
                 DropdownField::create('_country', 'Country', $countries)
                     ->setValue($currentCountry)
+                    ->setHasEmptyDefault(true)
             );
         }
 
