@@ -12,6 +12,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Security\Permission;
 use SilverStripe\View\Requirements;
@@ -33,7 +34,7 @@ class ControllerExtension extends DataExtension
         }
 
         // Authors can simulate different targeting criteria
-        if (Permission::check('CMS_ACCESS_CMSMain')) {
+        if (Permission::check('CMS_ACCESS_CMSMain') && $request && $request->getVar('_set_targeting')) {
             // TODO Groups support
 
             $useSegments = Config::inst()->get('Silverstripe\TargetingPoc\Config', 'use_segments');
@@ -45,16 +46,20 @@ class ControllerExtension extends DataExtension
                 // TODO Filter valid values
                 // Auto-starts session, and can store arrays natively.
                 $session->set('segments', json_encode($segments));
+            } else {
+                $session->set('segments', json_encode([]));
             }
 
             // Store country
             if ($useCountry && $request && $country = $request->getVar('_country')) {
                 // TODO Filter valid values
                 $session->set('country', $country);
+            } else {
+                $session->set('country', null);
             }
-
-            Requirements::css('silverstripe/targeting-poc:client/css/betternavigator.css');
         }
+
+        Requirements::css('silverstripe/targeting-poc:client/css/betternavigator.css');
     }
 
     public function getBetterButtonsTargetingForm()
@@ -75,6 +80,9 @@ class ControllerExtension extends DataExtension
         $useCountry = Config::inst()->get('Silverstripe\TargetingPoc\Config', 'use_country');
 
         $fields = FieldList::create();
+
+        $fields->push(HiddenField::create('_set_targeting', false, '1'));
+
         if ($useSegments) {
             $fields->push(
                 CheckboxSetField::create('_segments', 'Segments', $segments)
