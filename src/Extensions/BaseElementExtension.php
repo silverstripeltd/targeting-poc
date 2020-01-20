@@ -29,12 +29,6 @@ class BaseElementExtension extends DataExtension
      * @config
      */
     private static $segments = [
-        'InterestedBusiness' => 'Interested in Business',
-        'InterestedEducation' => 'Interested in Creative Arts',
-        'InterestedHealth' => 'Interested in Health',
-        'InterestedHumanities' => 'Interested in Humanities',
-        'Enquired' => 'Enquired',
-        'Enrolled' => 'Enrolled',
     ];
 
     /**

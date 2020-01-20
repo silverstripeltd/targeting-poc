@@ -45,6 +45,20 @@ Silverstripe\TargetingPoc\Config:
   use_loggedin: true
 ```
 
+Define some segments to show
+
+```yaml
+Silverstripe\TargetingPoc\Extensions\BaseElementExtension:
+  segments:
+    InterestedBusiness: Interested in Business
+    InterestedEducation: Interested in Creative Arts
+    InterestedHealth: Interested in Health
+    InterestedHumanities: Interested in Humanities
+    InterestedSciences: Interested in Sciences
+    Enquired: Enquired
+    Enrolled: Enrolled
+```
+
 ## Known Limitations
 
  * Does not "group" block variations
